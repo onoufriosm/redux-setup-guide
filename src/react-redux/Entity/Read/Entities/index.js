@@ -9,12 +9,12 @@ import { connect } from 'react-redux';
 import { readEntities } from '../../../../redux/actions';
 
 /* Selectors */
-import { selectEntities, selectReadEntitiesStatus } from '../../../../redux/selectors';
+import { selectReadEntities, selectReadEntitiesStatus } from '../../../../redux/selectors';
 
 const Container = ({ children, ...rest }) => children(rest);
 
 const mapStateToProps = (state, ownProps) => ({
-  entities: selectEntities(state, ownProps.entityName, ownProps.params),
+  entities: selectReadEntities(state, ownProps.entityName, ownProps.params),
   status: selectReadEntitiesStatus(state, ownProps.entityName, ownProps.params),
 });
 

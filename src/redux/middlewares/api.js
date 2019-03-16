@@ -5,23 +5,23 @@ import api from '../services/api';
  * depending on the response
  */
 const apiMiddleware = store => next => (action) => {
-  let call = null;
+  let method = null;
   const { type } = action;
   if (type.startsWith('REQUEST_READ_')) {
-    call = 'get';
+    method = 'GET';
   }
   if (type.startsWith('REQUEST_CREATE_')) {
-    call = 'post';
+    method = 'POST';
   }
   if (type.startsWith('REQUEST_UPDATE_') || type.startsWith('REQUEST_ADD_')) {
-    call = 'put';
+    method = 'PUT';
   }
   if (type.startsWith('REQUEST_DELETE_') || type.startsWith('REQUEST_REMOVE_')) {
-    call = 'delete';
+    method = 'DELETE';
   }
 
-  if (call) {
-    api(store, action, call)
+  if (method) {
+    api(method, action)
       .then((response) => {
         store.dispatch({
           type: action.type.replace('REQUEST', 'SUCCESS'),

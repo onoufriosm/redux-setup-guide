@@ -8,12 +8,9 @@ const byId = entityName => (state = {}, action) => {
     return state;
   }
 
-  const { type, meta: { parentName } } = action;
+  const { type, meta: { parentName }, payload: { result } } = action;
 
-  if (
-    parentName === entityName
-    && type.includes('SUCCESS_CREATE')
-  ) {
+  if (parentName === entityName && type.includes('SUCCESS_CREATE')) {
     return addChildEntityToParent(state, action, entityName);
   }
 
@@ -24,16 +21,10 @@ const byId = entityName => (state = {}, action) => {
     return removeChildFromParent(state, action, entityName);
   }
 
-  if (
-    type.startsWith('SUCCESS_ADD')
-    && parentName === entityName
-  ) {
+  if (type.startsWith('SUCCESS_ADD') && parentName === entityName) {
     return addChildToParent(state, action, entityName);
   }
-  if (
-    type.startsWith('SUCCESS_REMOVE')
-    && parentName === entityName
-  ) {
+  if (type.startsWith('SUCCESS_REMOVE') && parentName === entityName) {
     return removeManyToMany(state, action, entityName);
   }
 
@@ -45,8 +36,7 @@ const byId = entityName => (state = {}, action) => {
   //   return setManyToMany(state, action, entityName);
   // }
 
-  // TODO: Refactor. This will fail if result is 0
-  if (!action.payload.result) {
+  if (result === null || result === 'undefined') {
     return state;
   }
 

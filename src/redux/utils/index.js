@@ -8,7 +8,7 @@ export const getReduxType = (status, method, entityName) => (
 );
 
 /**
- * Computes the url to be called depending on the action 
+ * Computes the url to be called depending on the action
  * (This will be different for every project)
  */
 export const computeUrl = (method, action) => {

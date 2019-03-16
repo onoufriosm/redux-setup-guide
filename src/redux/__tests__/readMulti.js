@@ -44,7 +44,7 @@ describe('Entity - Read Entity', () => {
         error: null,
       });
       expect(
-        selectors.selectEntities(store.getState(), entityName, params),
+        selectors.selectReadEntities(store.getState(), entityName, params),
       ).toEqual(response);
 
       done();

@@ -33,7 +33,7 @@ export const selectEntitiesByArray = (state, entityName, array) => (
   )
 );
 
-export const selectEntities = (state, entityName, params) => {
+export const selectReadEntities = (state, entityName, params) => {
   const readId = state
     .entities[entityName].readIds[JSON.stringify(params)];
   if (!readId) {
