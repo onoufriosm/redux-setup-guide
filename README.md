@@ -26,11 +26,13 @@ This project serves as a guide to structure Redux for a react app.
 
 ## Understanding the Guide
 
-There is a Medium article explaining the core concepts of the setup, which you can find [`here`](https://github.com/paularmstrong/normalizr). See the end of the article for a video of my presentation at the React London meetup on these concept or follow the link [`here`](https://www.youtube.com/watch?time_continue=3231&v=yElOj4R4rdA). 
+There is a Medium article explaining the core concepts of the setup, which you can find [`here`](https://medium.com/@onoufriosm/state-management-with-redux-50f3ec10c10a). See the end of the article for a video of my presentation at the React London meetup on these concept or follow the link [`here`](https://www.youtube.com/watch?time_continue=3231&v=yElOj4R4rdA). 
 
 I advise you to read the article before diving into the code. 
 
 You can also run `yarn start` to run a demo application using this code. This relies on some mock api calls found in `src/index.js`, therefore it will return predetermined data and it won't behave as a real world application. Nevertheless, it would be very useful to check the redux devtools to see how the store is structure and how it gets updated in response to different actions.
+
+Finally, you can check the tests under `src/redux/__tests__` to understand how the action->middleware->reducer + selector combination works.
 
 
 ## Setup
@@ -179,7 +181,7 @@ See `src/components/Main/index.js` for the full example.
 
 ## Production ready
 
-This setup serves the basis for the Redux setup at [`Labstep`](https://www.labstep.com/). It is used in production and has accelerated the development dramatically. 
+This setup is the basis for the Redux setup at [`Labstep`](https://www.labstep.com/). It is used in production and has accelerated the development drastically. 
 
 [⇧ back to top](#table-of-contents)
 
