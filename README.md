@@ -26,7 +26,7 @@ This project serves as a guide to structure Redux for a react app.
 
 ## Understanding the Guide
 
-There is a Medium article explaining the core concepts of the setup, which you can find [`here`](https://medium.com/@onoufriosm/state-management-with-redux-50f3ec10c10a). See the end of the article for a video of my presentation at the React London meetup on these concept or follow the link [`here`](https://www.youtube.com/watch?time_continue=3231&v=yElOj4R4rdA). 
+There is a Medium article explaining the core concepts of the setup, which you can find [here](https://medium.com/@onoufriosm/state-management-with-redux-50f3ec10c10a). See the end of the article for a video of my presentation at the React London meetup on these concept or follow the link [here](https://www.youtube.com/watch?time_continue=3231&v=yElOj4R4rdA). 
 
 I advise you to read the article before diving into the code. 
 
