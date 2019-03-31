@@ -5,7 +5,7 @@ import reducers from './reducers';
 import middlewares from './middlewares';
 import { computeSchema } from './utils';
 
-const schema = {
+export const schema = {
   user: {
     define: ['posts'],
   },

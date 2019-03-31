@@ -5,7 +5,7 @@ import * as entityActions from '../actions';
 
 import getStore from '..';
 
-const initialValue = { id: 1, name: 'Jeff' };
+const initialValue = { id: 1, name: 'Jeff', posts: [1, 5, 8] };
 
 const store = getStore({
   entities: {
@@ -14,33 +14,32 @@ const store = getStore({
     },
     post: {
       readIds: {
-        '{"user_id":1}': { items: [1] },
+        '{"user_id":1}': { items: [1, 5, 8] },
       },
     },
   },
 });
 
+
 const axiosMock = new MockAdapter(axios);
 
-const response = { id: 15, text: 'Jeff' };
+const response = {};
 
 axiosMock.onAny().reply(200, response);
 
-describe('Entity - Read Entity', () => {
+describe('Entity - Delete Entity', () => {
   const entityName = 'post';
-  const parentName = 'user';
-  const parentId = 1;
-  const uuid = 'uuid';
+  const identifier = [5, 8];
 
   it('valid', (done) => {
-    const action = entityActions.createEntity(entityName, parentName, parentId, uuid, { text: 'Jeff' });
+    const action = entityActions.deleteEntity(entityName, identifier, {});
     store.dispatch(action);
 
     expect(
-      selectors.selectCreateEntityStatus(
+      selectors.selectDeleteEntityStatus(
         store.getState(),
         entityName,
-        uuid,
+        identifier,
       ),
     ).toEqual({
       isFetching: true,
@@ -49,21 +48,19 @@ describe('Entity - Read Entity', () => {
 
     setTimeout(() => {
       expect(
-        selectors.selectCreateEntityStatus(
+        selectors.selectDeleteEntityStatus(
           store.getState(),
           entityName,
-          uuid,
+          identifier,
         ),
       ).toEqual({
         isFetching: false,
         error: null,
       });
-      expect(
-        selectors.selectEntity(store.getState(), entityName, response.id),
-      ).toEqual(response);
 
-      expect(store.getState().entities.user.byId[1].posts).toEqual([15]);
-      expect(store.getState().entities.post.readIds['{"user_id":1}'].items).toEqual([1, 15]);
+
+      expect(store.getState().entities.user.byId[1].posts).toEqual([1]);
+      expect(store.getState().entities.post.readIds['{"user_id":1}'].items).toEqual([1]);
 
       done();
     }, 0);

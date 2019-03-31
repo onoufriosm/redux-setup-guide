@@ -5,16 +5,21 @@ import * as entityActions from '../actions';
 
 import getStore from '..';
 
-const initialValue = { id: 1, name: 'Jeff' };
+const initialValue = { id: 1, text: 'My first post', tags: [1, 5, 8] };
 
 const store = getStore({
   entities: {
-    user: {
-      byId: { 1: initialValue },
-    },
     post: {
-      readIds: {
-        '{"user_id":1}': { items: [1] },
+      byId: {
+        1: initialValue,
+      },
+    },
+    tag: {
+      byId: {
+        1: { id: 1, name: 'tag1' },
+        5: { id: 5, name: 'tag5' },
+        8: { id: 8, name: 'tag8' },
+        19: { id: 19, name: 'tag19' },
       },
     },
   },
@@ -22,25 +27,27 @@ const store = getStore({
 
 const axiosMock = new MockAdapter(axios);
 
-const response = { id: 15, text: 'Jeff' };
+const response = { id: 1 };
 
 axiosMock.onAny().reply(200, response);
 
 describe('Entity - Read Entity', () => {
-  const entityName = 'post';
-  const parentName = 'user';
+  const entityName = 'tag';
+  const entityId = 8;
+  const parentName = 'post';
   const parentId = 1;
-  const uuid = 'uuid';
 
   it('valid', (done) => {
-    const action = entityActions.createEntity(entityName, parentName, parentId, uuid, { text: 'Jeff' });
+    const action = entityActions.removeEntity(entityName, entityId, parentName, parentId, {});
     store.dispatch(action);
 
     expect(
-      selectors.selectCreateEntityStatus(
+      selectors.selectToggleEntityStatus(
         store.getState(),
         entityName,
-        uuid,
+        entityId,
+        parentName,
+        parentId,
       ),
     ).toEqual({
       isFetching: true,
@@ -49,21 +56,20 @@ describe('Entity - Read Entity', () => {
 
     setTimeout(() => {
       expect(
-        selectors.selectCreateEntityStatus(
+        selectors.selectToggleEntityStatus(
           store.getState(),
           entityName,
-          uuid,
+          entityId,
+          parentName,
+          parentId,
         ),
       ).toEqual({
         isFetching: false,
         error: null,
       });
       expect(
-        selectors.selectEntity(store.getState(), entityName, response.id),
-      ).toEqual(response);
-
-      expect(store.getState().entities.user.byId[1].posts).toEqual([15]);
-      expect(store.getState().entities.post.readIds['{"user_id":1}'].items).toEqual([1, 15]);
+        store.getState().entities.post.byId[1].tags,
+      ).toEqual([1, 5]);
 
       done();
     }, 0);
