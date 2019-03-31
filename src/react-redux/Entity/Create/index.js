@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  create(body, options) {
+  create(body, options = {}) {
     const enhancedOptions = {
       ...options,
       onSuccess: () => {

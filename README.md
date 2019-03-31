@@ -1,10 +1,8 @@
 # State management with Redux 
 
-This project serves as a guide to structure Redux for a react app. The goal is to setup Redux in such way that it will cover most (over 90%) of your api needs.
+This project serves as a guide to structure Redux for a react app. The goal is to setup Redux in such way that it will cover most (over 90%) of our api needs.
 
 > #### _Like this guide?_ **Show your support by giving a :star:**
-
-**Note:** This code is nearly complete (See [Coming soon](#coming-soon)). It is functional and can be used as is or serve as inspiration. Some actions (delete, create) for multiple entities might not work as expected yet.
 
 ---
 
@@ -110,13 +108,8 @@ See `src/components/Main/index.js` for the full example.
 
 TODO:
 
-1. Fix + make uniform create, delete, toggle for multiple entities 
-2. Finish writing unit tests
-3. Write examples for cursor/page based read
-4. Add caching
-5. Add optimistic updates
-6. Allow for rxjs/saga replacement
-7. Finish writing documentation
-8. Publish to npm (I plan to turn this into a package that everyone can use )
+1. Add examples for cursor/page based read
+2. Add example for caching / optimistic updates
+3. Publish to npm (I plan to turn this into a package that everyone can use )
 
 [⇧ back to top](#table-of-contents)
