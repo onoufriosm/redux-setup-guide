@@ -69,7 +69,7 @@ There are action creators for:
 10. Remove an entity from another in a many to many relationship (e.g. DELETE /post/1/tag/1)
 11. Remove multiple entities from another in a many to many relationship (e.g. DELETE /post/1/tag/1,2)
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## Middlewares
 
@@ -80,7 +80,7 @@ All actions will pass by the middlewares. There are two middlewares:
 1. Api middleware. This is responsible for doing the api call (depending on the action type) and responding with success/fail action depending on the type of repsonse
 2. Normalize middleware. This will normalize the payload using the [`normalizr`](https://github.com/paularmstrong/normalizr) library and the schema provided by us.
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## Reducers
 
@@ -152,13 +152,13 @@ And the updated state:
 
 All these are handle automatically and for all entities, so we don't have to worry about updating relationships anymore.
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## Selectors
 
 All selectors live under `src/redux/selectors`. The selectors will select either the data from the `byId` reducer and denormalize it or the status of the operation from the `readIds`, `updateIds`, `createIds`, `deleteIds` and `toggleIds` reducers.
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## react-redux
 
@@ -177,13 +177,13 @@ Example to read a single entity:
 
 See `src/components/Main/index.js` for the full example.
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## Production ready
 
 This setup is the basis for the Redux setup at [Labstep](https://app.labstep.com/). It is used in production and has accelerated the development drastically. 
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## Coming soon
 
@@ -193,10 +193,10 @@ TODO:
 2. Add example for caching / optimistic updates
 3. Publish to npm (I plan to turn this into a package that everyone can use )
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
 
 ## Help
 
 Feel free to open an issue asking for help. I'll do my best to reply promptly.
 
-[⇧ back to top](#table-of-contents)
+[⇧ back to top](#Docs)
