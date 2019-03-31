@@ -181,7 +181,7 @@ See `src/components/Main/index.js` for the full example.
 
 ## Production ready
 
-This setup is the basis for the Redux setup at [`Labstep`](https://www.labstep.com/). It is used in production and has accelerated the development drastically. 
+This setup is the basis for the Redux setup at [Labstep](https://www.labstep.com/). It is used in production and has accelerated the development drastically. 
 
 [⇧ back to top](#table-of-contents)
 
