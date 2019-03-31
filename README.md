@@ -98,7 +98,7 @@ All reducers live under `src/redux/reducers`. There are 6 subreducers for every 
 5. `deleteIds`. Information about the status of all delete calls will be stored here.
 6. `toggleIds`. Information about the status of all toggle calls will be stored here. Toggle refers to remove/add one entity to another in a many to many relationship.
 
-Since the data is stored in a normalized it becomes very easy to update relational data. Consider the following example where the initial state:
+Since the data is stored in a normalized structure it becomes very easy to update relational data. Consider the following example where the initial state:
 ```
 {
   entities: {
@@ -181,7 +181,7 @@ See `src/components/Main/index.js` for the full example.
 
 ## Production ready
 
-This setup is the basis for the Redux setup at [Labstep](https://www.labstep.com/). It is used in production and has accelerated the development drastically. 
+This setup is the basis for the Redux setup at [Labstep](https://app.labstep.com/). It is used in production and has accelerated the development drastically. 
 
 [⇧ back to top](#table-of-contents)
 
