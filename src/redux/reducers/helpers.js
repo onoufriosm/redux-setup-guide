@@ -93,7 +93,7 @@ export const nameOfChildKey = (
   );
 };
 
-export const removeChildFromParent = (
+export const removeDeletedChildFromParent = (
   state,
   action,
   entityName,
@@ -105,31 +105,26 @@ export const removeChildFromParent = (
   }
 
   // TODO: Write test. This is to reduce the number of count when deleting an entity.
-  // This was written specifically for comments. We should harmonize the count key
-  // on the backend.
-  const shouldFilter = Boolean(
-    state[key][childKey].find(
-      id => action.meta && id === action.meta.identifier,
-    ),
-  );
-  const updateCount = shouldFilter && state[key][`${childKey}_count`]
-    ? state[key][`${childKey}_count`] - 1
-    : state[key][`${childKey}_count`];
 
   return {
     ...result,
     [key]: {
       ...state[key],
       [childKey]: state[key][childKey].filter(
-        id => action.meta && id !== action.meta.identifier,
+        (id) => {
+          const { identifier } = action.meta;
+          if (Array.isArray(identifier)) {
+            return identifier.indexOf(id) === -1;
+          }
+          return id !== identifier;
+        },
       ),
-      [`${childKey}_count`]: updateCount,
     },
   };
 }, {});
 
 
-export const addChildEntityToParent = (
+export const addCreatedChildEntityToParent = (
   state,
   action,
   entityName,
@@ -178,7 +173,7 @@ export const addChildToParent = (state, action, entityName) => {
   };
 };
 
-export const removeManyToMany = (
+export const removeChildFromParent = (
   state,
   action,
   entityName,
@@ -192,7 +187,13 @@ export const removeManyToMany = (
 
   if (parent && children) {
     const filteredChildren = children.filter(
-      id => id !== action.meta.entityIds,
+      (id) => {
+        const { entityIds } = action.meta;
+        if (Array.isArray(entityIds)) {
+          return entityIds.indexOf(id) === -1;
+        }
+        return id !== entityIds;
+      },
     );
 
     newState = {

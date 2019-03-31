@@ -6,7 +6,7 @@
 import { connect } from 'react-redux';
 
 /* ACTIONS */
-import { addEntity, removeEntity, setEntity } from '../../../redux/actions';
+import { addEntity, removeEntity } from '../../../redux/actions';
 
 /* Selectors */
 import { selectToggleEntityStatus } from '../../../redux/selectors';
@@ -49,16 +49,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     } else if (actionType === 'remove') {
       dispatch(
         removeEntity(
-          ownProps.entityName,
-          entityIds,
-          ownProps.parentName,
-          ownProps.parentId,
-          options,
-        ),
-      );
-    } else if (actionType === 'set') {
-      dispatch(
-        setEntity(
           ownProps.entityName,
           entityIds,
           ownProps.parentName,

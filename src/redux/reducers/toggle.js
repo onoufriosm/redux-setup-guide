@@ -8,7 +8,7 @@ import {
  * Reducer to keep track of the status of toggle api calls
  */
 const toggleIds = entityName => (state = {}, action) => {
-  if (!(action.type && action.type.includes('ADD') && action.meta.entityName === entityName)) {
+  if (!(action.type && (action.type.includes('ADD') || action.type.includes('REMOVE')) && action.meta.entityName === entityName)) {
     return state;
   }
 

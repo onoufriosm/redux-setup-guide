@@ -67,12 +67,9 @@ describe('Entity - Read Entity', () => {
         isFetching: false,
         error: null,
       });
-      // expect(
-      //   selectors.selectEntity(store.getState(), parentName, parentId),
-      // ).toEqual({
-      //   ...initialValue,
-      //   tags: [1, 5, 8, 19],
-      // });
+      expect(
+        store.getState().entities.post.byId[1].tags,
+      ).toEqual([1, 5, 8, 19]);
 
       done();
     }, 0);

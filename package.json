@@ -1,7 +1,15 @@
 {
-  "name": "state",
-  "version": "0.1.0",
-  "private": true,
+  "name": "redux-setup-guide",
+  "version": "0.2.0",
+  "description": "Guide on how to setup Redux for a react application",
+  "license": "MIT",
+  "author": "Onoufrios Malikkides",
+  "keywords": [
+    "redux",
+    "react",
+    "state",
+    "guide"
+  ],
   "dependencies": {
     "antd": "^3.11.2",
     "axios": "^0.18.0",

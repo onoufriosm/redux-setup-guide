@@ -1,70 +1,76 @@
 import { getReduxType } from '../utils';
-import {
-  getCommonSingle, getCommonMulti, getToggleType, getToggleKey,
-} from './helpers';
+import { getToggleType, getToggleKey } from './helpers';
+
+/**
+ * Computes action creator
+ * @param  {string} entityName - Any entity type in the system e.g. 'user', 'group' e.t.c
+ * @param  {integer} entityId  - The id of the entity to be read
+ * @param  {Object} options    - onSuccess and onFail function could be passed here
+ * @param  {String} actionType - 'read' | 'update' | 'create' | 'delete'
+ * @param  {Boolean} single    - Acting on single entity (false if acting on multiple entities)
+ * @param  {Object} body       - Optional param
+ */
+export const commonActionCreator = (
+  entityName,
+  entityId,
+  options = {},
+  actionType,
+  single = true,
+  body,
+) => ({
+  type: getReduxType('request', actionType, entityName, false),
+  params: { id: entityId },
+  body,
+  meta: {
+    identifier: entityId,
+    entityName,
+    type: single ? 'single' : 'multi',
+    body,
+  },
+  options,
+});
 
 /**
  * Action creator to read a single entity
  */
 export const readEntity = (entityName, entityId, options) => (
-  getCommonSingle(entityName, entityId, options, 'read')
+  commonActionCreator(entityName, entityId, options, 'read')
 );
 
 /**
  * Action creator to read a multiple entities entity
  */
-export const readEntities = (entityName, params, options) => (
-  getCommonMulti(entityName, params, options, 'read')
-);
+export const readEntities = (entityName, params, options = {}) => ({
+  type: getReduxType('request', 'read', entityName, true),
+  params,
+  meta: {
+    identifier: JSON.stringify(params),
+    entityName,
+    type: 'multi',
+  },
+  options,
+});
 
 /**
  * Action creator to update a single entity
  */
-export const updateEntity = (entityName, entityId, body, options) => {
-  const common = getCommonSingle(entityName, entityId, options, 'update');
-  return {
-    ...common,
-    body,
-    meta: {
-      ...common.meta,
-      body,
-    },
-  };
-};
+export const updateEntity = (entityName, entityId, body, options) => (
+  commonActionCreator(entityName, entityId, options, 'update', true, body)
+);
 
 /**
  * Action creator to update multiple entities
  */
-export const updateEntities = (entityName, entityId, body, options) => {
-  const common = getCommonSingle(entityName, entityId, options, 'update');
-  return {
-    ...common,
-    body,
-    meta: {
-      ...common.meta,
-      body,
-      type: 'multi',
-    },
-  };
-};
+export const updateEntities = (entityName, entityId, body, options) => (
+  commonActionCreator(entityName, entityId, options, 'update', false, body)
+);
 
 /**
  * Action creator to delete a single entity
  */
 export const deleteEntity = (entityName, entityId, options) => (
-  getCommonSingle(entityName, entityId, options, 'delete')
+  commonActionCreator(entityName, entityId, options, 'delete')
 );
-
-/**
- * Returns a unique identifier for creating an entity
- */
-const getCreateIdentifier = (entityName, parentName, parentId, uuid) => {
-  let identifier = '';
-  if (parentName) {
-    identifier = `${parentName}_${parentId}&`;
-  }
-  return `${identifier}${uuid}`;
-};
 
 /**
  * Action creator to create a single entity
@@ -81,7 +87,7 @@ export const createEntity = (
   params: { parentName, parentId, entityName },
   body,
   meta: {
-    identifier: getCreateIdentifier(entityName, parentName, parentId, uuid),
+    identifier: uuid,
     entityName,
     parentName,
     parentId,
@@ -123,9 +129,3 @@ export const addEntity = (...args) => toggleEntity('add', ...args);
  * Action creator to remove entitiy(ies)
  */
 export const removeEntity = (...args) => toggleEntity('remove', ...args);
-
-
-/**
- * Action creator to set entitiy(ies)
- */
-export const setEntity = (...args) => toggleEntity('set', ...args);

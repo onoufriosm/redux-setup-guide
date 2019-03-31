@@ -18,7 +18,7 @@ describe('Entity - Read Entity', () => {
   const params = {};
 
   it('valid', (done) => {
-    const action = entityActions.readEntities(entityName, params);
+    const action = entityActions.readEntities(entityName, params, {});
     store.dispatch(action);
 
     expect(
@@ -44,7 +44,7 @@ describe('Entity - Read Entity', () => {
         error: null,
       });
       expect(
-        selectors.selectEntities(store.getState(), entityName, params),
+        selectors.selectReadEntities(store.getState(), entityName, params),
       ).toEqual(response);
 
       done();
