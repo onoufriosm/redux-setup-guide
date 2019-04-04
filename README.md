@@ -4,7 +4,7 @@ This project serves as a guide to structure Redux for a react app.
 
 **The Problem:** Setting up Redux to work for a React app can be quite challenging and quickly result into a lot of boilerplate being repeated. 
 
-**The Aim:** The aim of this project is to setup Redux in such way that it will reduce the boilerplate to a minimum and cover most (over 90%) of our api needs. 
+**The Aim:** The aim of this project is to setup Redux in such way that it will reduce the boilerplate to a minimum when adding extra entities to the system and cover most (over 90%) of our api needs. 
 
 > #### _Like this guide?_ **Show your support by giving a :star:**
 
@@ -18,7 +18,7 @@ This project serves as a guide to structure Redux for a react app.
 - [Reducers](#reducers)
 - [Selectors](#selectors)
 - [react-redux](#react-redux)
-- [Production ready](#production)
+- [Production ready](#production-ready)
 - [Coming soon](#coming-soon)
 - [Help](#help)
 
