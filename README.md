@@ -1,6 +1,6 @@
 # State management with Redux 
 
-This project serves as a guide to structure Redux for a react app. 
+This project serves as a guide to structure Redux for a react app. Once the setup is complete you can start making api calls in no time for any entity in your system. 
 
 **The Problem:** Setting up Redux to work for a React app can be quite challenging and quickly result into a lot of boilerplate being repeated. 
 
@@ -31,7 +31,9 @@ After the setup the only thing we need to do to introduce a new entity (e.g. use
 1. Include the entity along with its nested relationships in `src/redux/index.js`
 2. Call `getReducers` for this entity in `src/redux/reducers/index.js`
 
-With these two lines of code we can perform all the actions described in the [Actions](#actions) section for this entity
+With these **two** lines of code we can perform all the actions described in the [Actions](#actions) section for this entity
+
+Then, using the react-redux containers explained [later](#react-redux) in this guide, you can start doing your api call in React in no time!
 
 ## Understanding the Guide
 
@@ -59,12 +61,6 @@ All action creators, reducers and selectors will receive an entityName argument 
 
 All action creators live under `src/redux/actions`
 
-All actions return 4 fields:
-1. `type`. The type of the action (e.g. `REQUEST_READ_USER`)
-2. `params`. These are parameters that will be used by the api service to compute the api endpoint.
-3. `meta`. Meta data to be used by the reducers and the normalizer middleware.
-4. `options`. Extra options. Typically these can include `onSuccess` and `onFail` functions to be called when the api call is done.
-
 There are action creators for:
 1. Reading a single entity (e.g. GET /user/1)
 2. Reading multiple entities (e.g. GET /user)
@@ -77,6 +73,12 @@ There are action creators for:
 9. Add multiple entities to another in a many to many relationship (e.g. POST /post/1/tag/1,2)
 10. Remove an entity from another in a many to many relationship (e.g. DELETE /post/1/tag/1)
 11. Remove multiple entities from another in a many to many relationship (e.g. DELETE /post/1/tag/1,2)
+
+All actions return 4 fields:
+1. `type`. The type of the action (e.g. `REQUEST_READ_USER`)
+2. `params`. These are parameters that will be used by the api service to compute the api endpoint.
+3. `meta`. Meta data to be used by the reducers and the normalizer middleware.
+4. `options`. Extra options. Typically these can include `onSuccess` and `onFail` functions to be called when the api call is done.
 
 [⇧ back to top](#Docs)
 
