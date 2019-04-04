@@ -1,6 +1,6 @@
 # State management with Redux 
 
-This project serves as a guide to structure Redux for a react app. Once the setup is complete you can start making api calls in no time for any entity in your system. 
+This project serves as a guide to structure Redux for a real world React application. Once the setup is complete you can start making api calls in no time for any entity in your system. 
 
 **The Problem:** Setting up Redux to work for a React app can be quite challenging and quickly result into a lot of boilerplate being repeated. 
 
