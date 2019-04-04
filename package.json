@@ -1,7 +1,7 @@
 {
   "name": "redux-setup-guide",
   "version": "0.2.0",
-  "description": "Guide on how to setup Redux for a react application",
+  "description": "Guide on how to setup Redux for a react application. Once it's set up, adding new entities in the system and making api calls becomes a breeze.",
   "license": "MIT",
   "author": "Onoufrios Malikkides",
   "keywords": [
