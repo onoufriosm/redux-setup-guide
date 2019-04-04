@@ -33,7 +33,7 @@ After the setup the only thing we need to do to introduce a new entity (e.g. use
 
 With these **two** lines of code we can perform all the actions described in the [Actions](#actions) section for this entity
 
-Then, using the react-redux containers explained [later](#react-redux) in this guide, you can start doing your api call in React in no time!
+Then, using the react-redux containers explained [later](#react-redux) in this guide, you can start making your api calls in React in no time!
 
 ## Understanding the Guide
 
