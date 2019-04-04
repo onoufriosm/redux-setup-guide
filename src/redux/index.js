@@ -5,6 +5,10 @@ import reducers from './reducers';
 import middlewares from './middlewares';
 import { computeSchema } from './utils';
 
+// Add your entities here. Under define key you need to define
+// all the nested relationships. Pass a string if the name of the field
+// is the same as the entity name or an object with the key being the field name
+// and the value being the entity name
 export const schema = {
   user: {
     define: ['posts'],

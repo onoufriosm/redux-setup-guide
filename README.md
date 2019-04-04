@@ -11,6 +11,7 @@ This project serves as a guide to structure Redux for a react app.
 ---
 
 ## Docs
+- [Demonstrate simplicity](#example)
 - [Understanding the Guide](#understanding)
 - [Setup](#setup)
 - [Actions](#actions)
@@ -23,6 +24,14 @@ This project serves as a guide to structure Redux for a react app.
 - [Help](#help)
 
 ---
+
+## Demonstrate simplicity
+
+After the setup the only thing we need to do to introduce a new entity (e.g. user) is to:
+1. Include the entity along with its nested relationships in `src/redux/index.js`
+2. Call `getReducers` for this entity in `src/redux/reducers/index.js`
+
+With these two lines of code we can perform all the actions described in the [Actions](#actions) section for this entity
 
 ## Understanding the Guide
 
